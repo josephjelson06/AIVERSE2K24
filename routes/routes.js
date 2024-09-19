@@ -14,7 +14,7 @@ const {
     OptiML,
     uxplore,
     reg,
-    registerUser,
+    // registerUser,
     payment
 } = require('../controllers/views')
 
@@ -41,4 +41,4 @@ router.post('/payment', payment);
 module.exports = router;
 
 
-router.post('/submit', registerUser);
+// router.post('/submit', registerUser);
