@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@700&family=Poppins:wght@100;200;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/ab5e4afff4.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+      integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
+    <script>
+      const nav = document.getElementById("navbar");
+      window.onscroll = function () {
+        if (
+          document.body.scrollTop >= 40 ||
+          document.documentElement.scrollTop >= 40
+        ) {
+          navbar.classList.add("nav-colored");
+          navbar.classList.remove("nav-transparent");
+        } else {
+          navbar.classList.add("nav-transparent");
+          navbar.classList.remove("nav-colored");
+        }
+      };
+    </script>
+
+    <title>AIverse 2.0</title>
+    <link rel="icon" type="images/x-icon" href="/Static_images/ailogo.png" />
+  </head>
+
+  <body>
+    <!-- header section  -->
+    <header class="navbar nav-colored nav-transparent" id="navbar">
+      <div class="header">
+        <div id="logo">
+          <a href="#">
+            <img src="/Static_images/ailogo.png" alt="logo" />
+          </a>
+        </div>
+        <div class="menu">
+          <ul class="menu-links">
+            <li><a href="/about_dept">About DE-AI</a></li>
+            <!-- <li><a href="/login">ADMIN LOGIN</a></li> -->
+            <li><a href="/reg">REGISTRATION</a></li>
+            <li><a href="/team">TEAM</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <div class="reg">
+      <a href="/reg">REGISTRATION</a> <br />
+      <a href="/team">TEAM</a>
+    </div>
+
+    <!-- animations -->
+    <div class="stars">
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+    </div>
+
+    <!-- hero section  -->
+    <div class="intro">
+      <h1 class="intro-class">
+        <span class="heighlight1"> Welcome</span>
+        <br />to the <br />
+        <span class="heighlight2">AIverse 2.0</span>
+      </h1>
+
+      <div class="down-arrow">
+        <a href="#event"><i class="fa-solid fa-angle-down fa-2xl"></i></a>
+      </div>
+    </div>
+
+    <!-- <hr class="hr-line1">  -->
+    <!-- event section -->
+    <div class="events-section">
+      <hr id="event" />
+      <hr class="hr-line1" />
+      <h1>EVENTS</h1>
+
+      <div class="slider">
+        <div class="slide-track">
+          <!-- Emperor's Conquest -->
+          <div class="slide">
+            <img src="/Static_images/ec.png" alt="" />
+            <div class="buttons">
+              <a href="templates/emperor_conquest"
+                ><button>Explore EC</button></a
+              >
+              <a href="/reg?event=Emperor Conquest"
+                ><button>Register</button></a
+              >
+            </div>
+          </div>
+
+          <!-- Giga Gen  -->
+          <div class="slide">
+            <img src="/Static_images/gg.png" alt="" />
+            <div class="buttons">
+              <a href="/templates/giga_gen"><button>Explore GG</button></a>
+              <a href="/reg?event=GigaGen"><button>Register</button></a>
+            </div>
+          </div>
+
+          <!-- Beat Bots -->
+          <div class="slide">
+            <img src="/Static_images/bb.png" alt="" />
+            <div class="buttons">
+              <a href="/templates/beat_bots"><button>Explore BB</button></a>
+              <a href="/reg?event=BeatBots"><button>Register</button></a>
+            </div>
+          </div>
+
+          <!-- Opti ML -->
+          <div class="slide">
+            <img src="/Static_images/op.png" alt="" />
+            <div class="buttons">
+              <a href="/templates/opti_ml"><button>Explore O-ML</button></a>
+              <a href="/reg?event=optiML"><button>Register</button></a>
+            </div>
+          </div>
+
+          <!-- Uxplore -->
+          <div class="slide">
+            <img src="/Static_images/ux.png" alt="" />
+            <div class="buttons">
+              <a href="/templates/uxplore"><button>Explore UX</button></a>
+              <a href="/reg?event=Uxplore"><button>Register</button></a>
+            </div>
+          </div>
+
+          <!-- Extra slides -->
+          <div class="slide extra">
+            <img src="/Static_images/ec.png" alt="" />
+            <div class="buttons">
+              <a href="templates/emperor_conquest"
+                ><button>Explore EC</button></a
+              >
+              <a href="/reg?event=Emperor Conquest"
+                ><button>Register</button></a
+              >
+            </div>
+          </div>
+          <div class="slide extra">
+            <img src="/Static_images/gg.png" alt="" />
+            <div class="buttons">
+              <a href="/templates/giga_gen"><button>Explore GG</button></a>
+              <a href="/reg?event=GigaGen"><button>Register</button></a>
+            </div>
+          </div>
+          <div class="slide extra">
+            <img src="/Static_images/bb.png" alt="" />
+            <div class="buttons">
+              <a href="/templates/beat_bots"><button>Explore BB</button></a>
+              <a href="/reg?event=BeatBots"><button>Register</button></a>
+            </div>
+          </div>
+          <div class="slide extra">
+            <img src="/Static_images/op.png" alt="" />
+            <div class="buttons">
+              <a href="/templates/opti_ml"><button>Explore O-ML</button></a>
+              <a href="/reg?event=optiML"><button>Register</button></a>
+            </div>
+          </div>
+          <div class="slide extra">
+            <img src="/Static_images/ux.png" alt="" />
+            <div class="buttons">
+              <a href="/templates/uxplore"><button>Explore UX</button></a>
+              <a href="/reg?event=Uxplore"><button>Register</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="hr-line2" />
+    </div>
+
+    <!-- footer section  -->
+    <footer class="footer">
+      <div class="footer-logo">
+        <img src="/Static_images/ailogo.png" alt="" />
+        <h1>AIVerse 2.0</h1>
+      </div>
+      <br />
+
+      <div class="footer-content">
+        <div class="about">
+          <h3 style="text-decoration: underline">About :</h3>
+          <p style="color: white">
+            Prepare to be dazzled! We, the pioneers of AI, are thrilled to
+            present our annual departmental gala, AI Verse 2.0!
+          </p>
+          <br />
+        </div>
+
+        <div class="contact">
+          <h3 style="text-decoration: underline">Contact:</h3>
+          <br />
+          <p>
+            Mukul Potdar:
+            <a href="tel:9850300705" style="text-decoration: none; color: white"
+              >9850300705</a
+            >
+          </p>
+          <p>
+            Pritish Manwatkar:
+            <a href="tel:8262963069" style="text-decoration: none; color: white"
+              >8262963069</a
+            >
+          </p>
+          <br />
+          <p>
+            <span style="text-decoration: underline">Email:</span>:
+            <a
+              href="mailto: svpcetaiverse@gmail.com"
+              style="text-decoration: none; color: white"
+              >svpcetaiverse@gmail.com</a
+            >
+          </p>
+        </div>
+        <br />
+
+        <div class="sociallinks">
+          <h3 style="text-decoration: underline">Social:</h3>
+          <br />
+          <a
+            href="https://instagram.com/aiverse_1.0?igshid=MzRlODBiNWFlZA=="
+            target="_blank"
+            ><i class="fa-brands fa-instagram fa-2xl"></i
+          ></a>
+        </div>
+      </div>
+
+      <div class="developed_by">
+        <div class="developed_by_content">
+          <h3 style="text-decoration: underline">Developed By:</h3>
+          <p style="color: white">Jelson Joseph</p>
+          <p style="color: white">Pranali Mule</p>
+          <p style="color: white"></p>
+        </div>
+      </div>
+      <div class="c-line"></div>
+      <div class="copyright">Copyright &copy;2024 | AIverse 2.0</div>
+    </footer>
+  </body>
+</html>

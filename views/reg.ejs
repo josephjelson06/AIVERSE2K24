@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AIVerse 2.0 | Payment Submission</title>
+    <link rel="icon" type="images/x-icon" href="/Static_images/ailogo.png" />
+    <!-- Bootstrap CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <h2 class="text-center mb-4">Event Registration</h2>
+          <!-- <form id="registrationForm" onsubmit="return validateForm()"> -->
+          <form
+            id="registrationForm"
+            action="/submit"
+            method="POST"
+            onsubmit="return validateForm()"
+          >
+            <!-- Main participant details -->
+            <!-- New Transaction ID Field -->
+            <div class="row mb-3">
+              <div class="col-md-12">
+                <label for="teamName" class="form-label"
+                  >Team Name</label
+                >
+                <input
+                  type="text"
+                  id="teamName"
+                  name="teamName"
+                  class="form-control input-field"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-6 name">
+                <label for="name" class="form-label">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="form-control input-field"
+                  required
+                />
+              </div>
+              <div class="col-md-6 Phonenumber-div">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="form-control input-field"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="row mb-3 email-div">
+              <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-control input-field"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="branch" class="form-label">Branch</label>
+                <select id="branch" name="branch" class="form-select" required>
+                  <option style="display: none"></option>
+                  <option value="CE">Computer Engineering</option>
+                  <option value="CSE">CSE(Data Science)</option>
+                  <option value="IT">Information Technology</option>
+                  <option value="AI">Artificial Intelligence</option>
+                  <option value="ETC">Electronics And Telecommunication</option>
+                  <option value="EE">Electrical Engineering</option>
+                  <option value="ME">Mechanical Engineering</option>
+                  <option value="Civil">Civil Engineering</option>
+                  <option value="IOT">Internet Of Things</option>
+                  <option value="CSBS">CS(Business System)</option>
+                  <option value="CS">Cyber Security</option>
+                  <option value="BV">B.VOC</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="year" class="form-label">Year</label>
+                <select id="year" name="year" class="form-select" required>
+                  <option style="display: none"></option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="event" class="form-label">Event</label>
+                <select
+                  id="event"
+                  name="event"
+                  class="form-select"
+                  required
+                  onchange="updateAmount()"
+                >
+                  <option style="display: none"></option>
+                  <option value="Emperor's Conquest">Emperor's Conquest</option>
+                  <option value="GigaGen">GigaGen</option>
+                  <option value="optiML">optiML</option>
+                  <option value="BeatBots">BeatBots</option>
+                  <option value="Uxplore">Uxplore</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- <label for="screenshot">Upload Payment Screenshot:</label
+            ><br /><br />
+            <h6 style="color: red">* Uploading the Screenshot is Mandatory</h6>
+            <br />
+            <input
+              type="file"
+              id="screenshot"
+              name="screenshot"
+              accept="image/*"
+              required
+              onchange="enableSubmit()"
+            /><br /><br /> -->
+
+            <!-- New Transaction ID Field -->
+            <div class="row mb-3">
+              <div class="col-md-12">
+                <label for="transactionID" class="form-label"
+                  >Transaction ID</label
+                >
+                <input
+                  type="text"
+                  id="transactionID"
+                  name="transactionID"
+                  class="form-control input-field"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="teamSize" class="form-label">Team Size</label>
+                <select
+                  id="teamSize"
+                  name="teamSize"
+                  class="form-select"
+                  required
+                  onchange="updateAmount()"
+                >
+                  <!-- <option style="display: none"></option> -->
+                  <option value="1" selected>1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Dynamic team members details -->
+            <div id="teamMembers" class="mt-4"></div>
+
+            <!-- Hidden amount input -->
+            <input type="hidden" id="amount" name="amount" />
+
+            <!-- QR Code Image -->
+            <div class="mt-4 text-center">
+              <img
+                id="qrCode"
+                src=""
+                alt="QR Code"
+                style="max-width: 200px; display: none"
+              />
+              <!-- <p id="amountText"></p> -->
+            </div>
+            <br />
+            <br />
+
+            <div class="d-grid gap-2">
+              <input
+                type="submit"
+                id="pay-button"
+                class="btn btn-primary"
+                value="Pay and Register"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS (for optional Bootstrap functionality) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Validate form before submission
+      function validateForm() {
+        const nameInput = document.querySelector(".name .input-field");
+        const phoneInput = document.querySelector(
+          ".Phonenumber-div .input-field"
+        );
+        const emailInput = document.querySelector(".email-div .input-field");
+        const branchSelect = document.getElementById("branch");
+        const yearSelect = document.getElementById("year");
+        const eventSelect = document.getElementById("event");
+        const teamSelect = document.getElementById("teamSize");
+
+        if (
+          nameInput.value === "" ||
+          phoneInput.value === "" ||
+          emailInput.value === "" ||
+          branchSelect.value === "" ||
+          yearSelect.value === "" ||
+          eventSelect.value === "" ||
+          teamSelect.value === ""
+        ) {
+          alert("Please fill in all the required fields.");
+          return false; // Prevent form submission
+        }
+        return true; // Allow form submission
+      }
+
+      // Update the amount dynamically based on event and team size
+      function updateAmount() {
+        const eventSelect = document.getElementById("event");
+        const teamSelect = document.getElementById("teamSize");
+        const payButton = document.getElementById("pay-button");
+
+        const qrCode = document.getElementById("qrCode");
+        // const amountText = document.getElementById("amountText");
+
+        const eventValue = eventSelect.value;
+        const teamValue = teamSelect.value;
+
+        let amount = 0;
+
+        let qrImage = "";
+
+        // Event: Emperor's Conquest
+        if (eventValue === "Emperor's Conquest") {
+          if (teamValue === "4") {
+            amount = 150;
+            qrImage = "qr6.jpg";
+            payButton.disabled = false;
+          } else {
+            payButton.disabled = true;
+            alert("Only 4 members are allowed in this event");
+          }
+        }
+
+        // Event: GigaGen
+        if (eventValue === "GigaGen") {
+          if (teamValue === "1") {
+            amount = 50;
+            qrImage = "qr2.jpg";
+            payButton.disabled = false;
+          } else if (teamValue === "2") {
+            amount = 100;
+            qrImage = "qr4.jpg";
+            payButton.disabled = false;
+          } else if (teamValue === "4") {
+            amount = 130;
+            qrImage = "qr5.jpg";
+            payButton.disabled = false;
+          } else {
+            payButton.disabled = true;
+            alert("Team size should be 1, 2, or 4. Please select accordingly");
+          }
+        }
+
+        // Event: optiML
+        if (eventValue === "optiML") {
+          if (teamValue === "1") {
+            amount = 70;
+            qrImage = "qr3.jpg";
+            payButton.disabled = false;
+          } else if (teamValue === "2") {
+            amount = 100;
+            qrImage = "qr4.jpg";
+            payButton.disabled = false;
+          } else if (teamValue === "3") {
+            amount = 150;
+            qrImage = "qr6.jpg";
+            payButton.disabled = false;
+          } else {
+            payButton.disabled = true;
+            alert("Team size should be 1, 2, or 3. Please select accordingly");
+          }
+        }
+
+        // Event: BeatBots
+        if (eventValue === "BeatBots") {
+          if (teamValue === "1") {
+            amount = 70;
+            qrImage = "qr3.jpg";
+            payButton.disabled = false;
+          } else if (teamValue === "2") {
+            amount = 100;
+            qrImage = "qr4.jpg";
+            payButton.disabled = false;
+          } else {
+            payButton.disabled = true;
+            alert("Team size should be 1 or 2. Please select accordingly");
+          }
+        }
+
+        // Event: Uxplore
+        if (eventValue === "Uxplore") {
+          if (teamValue === "1") {
+            amount = 70;
+            qrImage = "qr3.jpg";
+            payButton.disabled = false;
+          } else if (teamValue === "2") {
+            amount = 100;
+            qrImage = "qr4.jpg";
+            payButton.disabled = false;
+          } else if (teamValue === "3") {
+            amount = 150;
+            qrImage = "qr6.jpg";
+            payButton.disabled = false;
+          } else {
+            payButton.disabled = true;
+            alert("Team size should be 1, 2 or 3. Please select accordingly");
+          }
+        }
+
+        // Update the displayed amount and QR code
+        if (qrImage) {
+          qrCode.src = `/Static_images/qr/${qrImage}`;
+          // qrCode.src = ``;
+          qrCode.style.display = "block";
+        } else {
+          qrCode.style.display = "none";
+        }
+
+        // You can add similar conditions for other events here
+        payButton.value = `Pay Rs.${amount} and Register`;
+        document.getElementById("amount").value = amount;
+      }
+
+      // Dynamic team member input fields
+      document
+        .getElementById("teamSize")
+        .addEventListener("change", function () {
+          const teamSize = parseInt(this.value);
+          const teamMembersDiv = document.getElementById("teamMembers");
+          teamMembersDiv.innerHTML = ""; // Clear previous inputs
+
+          // Add new inputs for each team member
+          if (teamSize > 1) {
+            for (let i = 2; i <= teamSize; i++) {
+              const memberSection = document.createElement("div");
+              memberSection.classList.add("mb-3");
+              memberSection.innerHTML = `
+        <h4>Member ${i} Details</h4>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="name${i}" class="form-label">Name</label>
+            <input type="text" id="name${i}" name="name${i}" class="form-control" required>
+          </div>
+          <div class="col-md-6">
+            <label for="phone${i}" class="form-label">Phone Number</label>
+            <input type="tel" id="phone${i}" name="phone${i}" class="form-control" required>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="email${i}" class="form-label">Email</label>
+            <input type="email" id="email${i}" name="email${i}" class="form-control" required>
+          </div>
+          <div class="col-md-6">
+            <label for="branch${i}" class="form-label">Branch</label>
+            <select id="branch${i}" name="branch${i}" class="form-select" required>
+                  <option value="CE">Computer Engineering</option>
+                  <option value="CSE">CSE(Data Science)</option>
+                  <option value="IT">Information Technology</option>
+                  <option value="AI">Artificial Intelligence</option>
+                  <option value="ETC">Electronics And Telecommunication</option>
+                  <option value="EE">Electrical Engineering</option>
+                  <option value="ME">Mechanical Engineering</option>
+                  <option value="Civil">Civil Engineering</option>
+                  <option value="IOT">Internet Of Things</option>
+                  <option value="CSBS">CS(Business System)</option>
+                  <option value="CS">Cyber Security</option>
+                  <option value="BV">B.VOC</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="year${i}" class="form-label">Year</label>
+            <select id="year${i}" name="year${i}" class="form-select" required>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+        </div>
+      `;
+              teamMembersDiv.appendChild(memberSection);
+            }
+          }
+        });
+    </script>
+  </body>
+</html>
