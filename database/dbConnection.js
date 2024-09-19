@@ -15,3 +15,31 @@
 // });
 
 // module.exports = db;
+
+const { Pool } = require('pg');
+require('dotenv').config();  // Ensure you have the dotenv package to load environment variables
+
+// Set up the PostgreSQL database connection using environment variables
+const pool = new Pool({
+    host: process.env.DB_HOST,       // PostgreSQL host from environment variable
+    user: process.env.DB_USER,       // PostgreSQL username from environment variable
+    password: process.env.DB_PASSWORD, // PostgreSQL password from environment variable
+    database: process.env.DB_NAME,   // PostgreSQL database name from environment variable
+    port: process.env.DB_PORT,       // PostgreSQL port from environment variable
+    ssl: {
+        rejectUnauthorized: false   // Required for secure connections, e.g., on platforms like Render
+    }
+});
+
+// Connect to the database and check for errors
+pool.connect((err, client, release) => {
+    if (err) {
+        return console.error('Error acquiring client', err.stack);
+    }
+    console.log('Connected to PostgreSQL Database.');
+
+    // Release the client back to the pool after use
+    release();
+});
+
+module.exports = pool;
