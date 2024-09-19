@@ -21,11 +21,14 @@ require('dotenv').config();  // Ensure you have the dotenv package to load envir
 
 // Set up the PostgreSQL database connection using environment variables
 const pool = new Pool({
-    host: process.env.DB_HOST,       // PostgreSQL host from environment variable
-    user: process.env.DB_USER,       // PostgreSQL username from environment variable
-    password: process.env.DB_PASSWORD, // PostgreSQL password from environment variable
-    database: process.env.DB_NAME,   // PostgreSQL database name from environment variable
-    port: process.env.DB_PORT,       // PostgreSQL port from environment variable
+
+    // host: process.env.DB_HOST,       // PostgreSQL host from environment variable
+    // user: process.env.DB_USER,       // PostgreSQL username from environment variable
+    // password: process.env.DB_PASSWORD, // PostgreSQL password from environment variable
+    // database: process.env.DB_NAME,   // PostgreSQL database name from environment variable
+    // port: process.env.DB_PORT,       // PostgreSQL port from environment variable
+    connectionString: process.env.DATABASE_URL, // Accessing the DATABASE_URL from .env
+
     ssl: {
         rejectUnauthorized: false   // Required for secure connections, e.g., on platforms like Render
     }
