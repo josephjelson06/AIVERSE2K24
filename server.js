@@ -3,10 +3,8 @@ const bodyParser = require('body-parser');
 const routes = require('./routes/routes');
 const path = require('path');
 require('dotenv').config();
- // Import cors
+// Import cors
 
-// Require the schema
-// const schema = require('./models/Schema');
 
 const app = express();
 

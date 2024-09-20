@@ -31,7 +31,7 @@ registerUser = (req, res) => {
     // console.log('before: ',req.body);
 
     // console.log('********************************************************');
-    
+
     const {
         teamName,
         name,
@@ -41,7 +41,8 @@ registerUser = (req, res) => {
         year,
         event,
         teamSize,
-        transactionID
+        transactionID,
+        amount
     } = req.body;
 
     // // Log the request body to verify data
@@ -66,12 +67,12 @@ registerUser = (req, res) => {
             memberBranch || null,
             memberYear || null
         );
-        
-            // console.log('membername',memberName);
-            // console.log('memberphone',memberPhone);
-            // console.log('memberemail',memberEmail);
-            // console.log('memberbranch',memberBranch);
-            // console.log('memberyear',memberYear);
+
+        // console.log('membername',memberName);
+        // console.log('memberphone',memberPhone);
+        // console.log('memberemail',memberEmail);
+        // console.log('memberbranch',memberBranch);
+        // console.log('memberyear',memberYear);
     }
 
     // console.log(memberValues);
@@ -84,7 +85,7 @@ registerUser = (req, res) => {
     // Insert the main team data and team members into Teams table
     const registrationSql = `
         INSERT INTO Teams (
-            TeamName, LeaderName, PhoneNo, Email, Branch, Year, Event, TeamSize, TransactionID,
+            TeamName, LeaderName, PhoneNo, Email, Branch, Year, Event, TeamSize, TransactionID, Amount,
             Member2Name, Member2PhoneNo, Member2Email, Member2Branch, Member2Year,
             Member3Name, Member3PhoneNo, Member3Email, Member3Branch, Member3Year,
             Member4Name, Member4PhoneNo, Member4Email, Member4Branch, Member4Year
@@ -92,20 +93,20 @@ registerUser = (req, res) => {
             $1, $2, $3, $4, $5, $6, $7, $8, $9,
             $10, $11, $12, $13, $14,
             $15, $16, $17, $18, $19,
-            $20, $21, $22, $23, $24
+            $20, $21, $22, $23, $24, $25
         )
     `;
 
     // Merge leader and member values into a single array
     const registrationValues = [
-        teamName, name, phone, email, branch, year, event, teamSize, transactionID,
+        teamName, name, phone, email, branch, year, event, teamSize, transactionID, amount,
         ...memberValues
     ];
 
     // Log the registration values for debugging
-    
+
     // console.log('Registration values:', registrationValues);
-    
+
     // Execute the query
     db.query(registrationSql, registrationValues, (err, results) => {
         if (err) {
